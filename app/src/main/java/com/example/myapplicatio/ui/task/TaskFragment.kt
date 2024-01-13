@@ -41,33 +41,36 @@ class TaskFragment : Fragment() {
         }
         binding.btnSave.setOnClickListener {
 
-            if (task != null) {
-                updateTask()
+            if (task == null) {
+                save()
 
             } else {
-                insertTask()
+
+                updateTask(task)
             }
+            findNavController().navigateUp()
         }
+
     }
 
-    private fun updateTask() {
-        val task = Task(
-            title = binding.etTitle.text.toString(),
-            desc = binding.etDesc.text.toString()
+    private fun updateTask(task: Task) {
+        App.db.taskDao().update(
+            task.copy(
+                title = binding.etTitle.text.toString(),
+                desc = binding.etDesc.text.toString()
+            )
         )
-        App.db.taskDao().update(task)
-        findNavController().navigateUp()
     }
 
-    private fun insertTask() {
-        val data =
+    private fun save() {
+        val task =
             Task(
                 title = binding.etTitle.text.toString(),
                 desc = binding.etDesc.text.toString()
             )
-        App.db.taskDao().insert(data)
-        findNavController().navigateUp()
+        App.db.taskDao().insert(task)
     }
+
     companion object {
         const val TASK_REQUEST_KEY = "task.request.key"
         const val TASK_KEY = "task.key"
