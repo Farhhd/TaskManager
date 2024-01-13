@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".ui.profile.ProfileFragment">
 
     <TextView
@@ -32,16 +33,15 @@
         android:src="@drawable/img"
         android:padding="16dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/img_profile"
-        app:layout_constraintEnd_toEndOf="@id/img_profile"
-        app:layout_constraintStart_toStartOf="@id/img_profile"
-        android:text="@string/verified"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
-
+        android:layout_margin="32dp"
+        android:hint="@string/name"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/img_profile"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
