@@ -10,13 +10,25 @@ import com.bumptech.glide.Glide
 import com.example.myapplicatio.databinding.ItemVpBinding
 import com.example.myapplicatio.ui.model.OnBoarding
 
-class OnBoardingAdapter(private val onClick:()->Unit)
-    : Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
+class OnBoardingAdapter(private val onClick: () -> Unit) :
+    Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
 
     private val list = arrayListOf(
-        OnBoarding("https://www.shutterstock.com/image-illustration/convenient-word-on-ring-around-260nw-208554790.jpg","Удобство","при переводах и платежах"),
-        OnBoarding("https://math-media.byjusfutureschool.com/bfs-math/2022/05/27171640/wall-office-clock-with-black-red-hands-white-dial_1284-8992.webp","Экономия времени","Оплачивайте в 2 клика"),
-        OnBoarding("https://media.istockphoto.com/id/1423854750/vector/industrial-worker-holding-safety-first-sign-engineer-with-his-personal-protective-equipment.jpg?s=612x612&w=0&k=20&c=g1Dk752yoyWfapIRDlp8YUxKPrOdEAB8MNOAhBRbz04=","Безопасность","Без рисков и затрат"),
+        OnBoarding(
+            "https://www.shutterstock.com/image-illustration/convenient-word-on-ring-around-260nw-208554790.jpg",
+            "Удобство",
+            "при переводах и платежах"
+        ),
+        OnBoarding(
+            "https://math-media.byjusfutureschool.com/bfs-math/2022/05/27171640/wall-office-clock-with-black-red-hands-white-dial_1284-8992.webp",
+            "Экономия времени",
+            "Оплачивайте в 2 клика"
+        ),
+        OnBoarding(
+            "https://media.istockphoto.com/id/1423854750/vector/industrial-worker-holding-safety-first-sign-engineer-with-his-personal-protective-equipment.jpg?s=612x612&w=0&k=20&c=g1Dk752yoyWfapIRDlp8YUxKPrOdEAB8MNOAhBRbz04=",
+            "Безопасность",
+            "Без рисков и затрат"
+        ),
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
@@ -42,12 +54,12 @@ class OnBoardingAdapter(private val onClick:()->Unit)
 
         fun bind(onBoarding: OnBoarding) = with(binding) {
             tvTitle.text = onBoarding.title
-            tvDesc.text=onBoarding.desc
+            tvDesc.text = onBoarding.desc
             Glide.with(imgBoard).load(onBoarding.image).into(imgBoard)
-            btnStart.setOnClickListener{ onClick() }
-            skip.setOnClickListener{ onClick() }
-            skip.isInvisible=adapterPosition== list.lastIndex
-            btnStart.isVisible= adapterPosition ==list.lastIndex
+            btnStart.setOnClickListener { onClick() }
+            skip.setOnClickListener { onClick() }
+            skip.isInvisible = adapterPosition == list.lastIndex
+            btnStart.isVisible = adapterPosition == list.lastIndex
         }
     }
 }
